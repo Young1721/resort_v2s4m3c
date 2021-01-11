@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace = "dev.mvc.member.MemberDAOInter">
+  <select id="checkID" resultType="int" parameterType="String">
+    SELECT COUNT(id) as cnt
+    FROM member
+    WHERE id=#{id}
+  </select>
+  
+  <insert id="create" parameterType="MemberVO">
+    INSERT INTO member(memberno, id, passwd, mname, tel, zipcode, address1, address2, mdate)
+    VALUES (member_seq.nextval, #{id}, #{passwd}, #{mname}, #{tel}, #{zipcode}, 
+                 #{address1}, #{address2}, sysdate)
+  </insert>
+  
+
+</mapper> 
